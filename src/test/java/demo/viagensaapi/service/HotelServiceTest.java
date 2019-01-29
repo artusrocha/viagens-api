@@ -32,7 +32,7 @@ public class HotelServiceTest {
 	private HotelRepository hotelRepository;
 
 	@Autowired
-	private HotelService hotelService;
+	private HotelService sut;
 
 	// private static redis.embedded.RedisServer redisServer;
 
@@ -51,7 +51,7 @@ public class HotelServiceTest {
 	@Test
 	public void busca_hotel_por_id_testando_entidade_retornada() throws Exception {
 		createMockupHotel();
-		final Optional<Hotel> hotelOp = hotelService.getHotelById(1000);
+		final Optional<Hotel> hotelOp = sut.getHotelById(1000);
 		assertEquals(true, hotelOp.isPresent());
 		Hotel hotel = hotelOp.get();
 		assertEquals(1000, hotel.getId());		
@@ -60,6 +60,15 @@ public class HotelServiceTest {
 		assertEquals("Lisboa", hotel.getCityName());
 		assertEquals((Double) 500.00, hotel.getRooms().get(0).getPrice().getAdult());
 		deleteMockupHotel();
+	}
+	
+	@Test
+	public void busca_hotel_por_id_inexistente_no_cache_testando_entidade_retornada() throws Exception {
+		final Optional<Hotel> hotel = sut.getHotelById(1);
+		assertEquals(true, hotel.isPresent());
+		assertEquals(1, hotel.get().getId());
+		assertEquals("Porto Seguro", hotel.get().getCityName());
+		assertEquals((Double) 1372.54, hotel.get().getRooms().get(0).getPrice().getAdult());
 	}
 
 	private void deleteMockupHotel() {
@@ -80,15 +89,6 @@ public class HotelServiceTest {
 		hotel.getRooms().get(0).getPrice().setAdult(500.00);
 		hotel.getRooms().get(0).getPrice().setChild(45.00);
 		hotelRepository.save(hotel);
-	}
-
-	@Test
-	public void busca_hotel_por_id_inexistente_no_cache_testando_entidade_retornada() throws Exception {
-		final Optional<Hotel> hotel = hotelService.getHotelById(1);
-		assertEquals(true, hotel.isPresent());
-		assertEquals(1, hotel.get().getId());
-		assertEquals("Porto Seguro", hotel.get().getCityName());
-		assertEquals((Double) 1372.54, hotel.get().getRooms().get(0).getPrice().getAdult());
 	}
 
 }
