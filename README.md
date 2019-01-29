@@ -1,8 +1,8 @@
 ### API/Relay Demo
 A implementação utiliza Redis para realizar um cache dos itens requisitados.
-O tempo de validade dos itens cacheados pode ser ajustado em *ApiConf.CACHE_TTL*
+O tempo de validade dos itens cacheados pode ser ajustado em *ApiConf.CACHE_TTL*  
 **Obs: Para testes é necessário executar uma instancia do redis em localhost.
-Ou indicar uma instancia em application.properties**
+Ou indicar uma instancia em application.properties**  
 São disponibilizados 4 endpoints.
 ```
 Um para consulta por id do hotel: GET /api/hotel/byId/
