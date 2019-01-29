@@ -1,6 +1,8 @@
 ### API/Relay Demo
 A implementação utiliza Redis para realizar um cache dos itens requisitados.
 O tempo de validade dos itens cacheados pode ser ajustado em *ApiConf.CACHE_TTL*
+**Obs: Para testes é necessário executar uma instancia do redis em localhost.
+Ou indicar uma instancia em application.properties**
 São disponibilizados 4 endpoints.
 ```
 Um para consulta por id do hotel: GET /api/hotel/byId/
@@ -10,7 +12,7 @@ Exemplo: GET /api/hotel/byId/?hotelId=4&checkin=2019-01-01&checkout=2019-01-10&a
 ```
 Um para consulta por código da cidade: GET /api/hotel/byCityCode/
 Parâmetros: cityCode, checkin, checkout, adults, childs
-Exemplo: GET /api/hotel/byCityCode/?cityCode=4&checkin=2019-01-01&checkout=2019-01-10&adults=3&childs=2
+Exemplo: GET /api/hotel/byCityCode/?cityCode=1032&checkin=2019-01-01&checkout=2019-01-10&adults=3&childs=2
 ```
 ```
 Um que permite realizar o pré carregamento do hotel para o cache:
