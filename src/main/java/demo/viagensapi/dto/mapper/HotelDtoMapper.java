@@ -27,7 +27,7 @@ public class HotelDtoMapper {
 		for(Room room : hotel.getRooms() ) {
 			RoomDtoOut roomDto = new RoomDtoOut();
 			roomDto.setCategoryName(room.getCategoryName());
-			roomDto.setRoomID(room.getRoomId());
+			roomDto.setRoomID(room.getRoomID());
 			roomDto.setPriceDetail( mapPriceDetails(room) );
 			rooms.add(roomDto);
 		}

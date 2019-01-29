@@ -8,15 +8,15 @@ public class RoomDtoOut implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private long roomId ;
+	private long roomID ;
     private String categoryName ;
     private double totalPrice ;
     private PriceDetailDtoOutput priceDetail ;
 	public long getRoomID() {
-		return roomId;
+		return roomID;
 	}
-	public void setRoomID(long roomId) {
-		this.roomId = roomId;
+	public void setRoomID(long roomID) {
+		this.roomID = roomID;
 	}
 	public String getCategoryName() {
 		return categoryName;

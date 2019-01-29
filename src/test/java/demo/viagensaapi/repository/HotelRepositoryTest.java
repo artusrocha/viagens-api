@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.AfterClass;
@@ -105,7 +106,7 @@ public class HotelRepositoryTest {
         hotel.setCityName("Natal");
         hotel.setRooms( new ArrayList<Room>() );
         hotel.getRooms().add(new Room());
-        hotel.getRooms().get(0).setRoomId(1);
+        hotel.getRooms().get(0).setRoomID(1);
         hotel.getRooms().get(0).setPrice( new Price() );
         hotel.getRooms().get(0).getPrice().setAdult(500.00);
         hotel.getRooms().get(0).getPrice().setChild(45.00);
@@ -113,7 +114,7 @@ public class HotelRepositoryTest {
 
         final Hotel foundHotel = hotelRepository.findById(1L).get();
         assertEquals(1, foundHotel.getRooms().size());
-        assertEquals(1, foundHotel.getRooms().get(0).getRoomId() );
+        assertEquals(1, foundHotel.getRooms().get(0).getRoomID() );
         hotelRepository.deleteAll();
     }
     
@@ -125,7 +126,7 @@ public class HotelRepositoryTest {
         hotel.setCityName("Natal");
         hotel.setRooms( new ArrayList<Room>() );
         hotel.getRooms().add(new Room());
-        hotel.getRooms().get(0).setRoomId(1);
+        hotel.getRooms().get(0).setRoomID(1);
         hotel.getRooms().get(0).setPrice( new Price() );
         hotel.getRooms().get(0).getPrice().setAdult(500.00);
         hotel.getRooms().get(0).getPrice().setChild(45.00);
@@ -133,7 +134,7 @@ public class HotelRepositoryTest {
 
         final Hotel foundHotel = hotelRepository.findById(1L).get();
         assertEquals(1, foundHotel.getRooms().size());
-        assertEquals(1, foundHotel.getRooms().get(0).getRoomId() );
+        assertEquals(1, foundHotel.getRooms().get(0).getRoomID() );
         Price p = foundHotel.getRooms().get(0).getPrice() ;
         assertEquals( (Double) 500.00, p.getAdult() );
         assertEquals( (Double) 45.00, p.getChild() );
@@ -156,6 +157,28 @@ public class HotelRepositoryTest {
         List<Hotel> hotels = new ArrayList<>();
         hotelRepository.findAll().forEach(hotels::add);
         assertEquals(hotels.size(), 2);
+        hotelRepository.deleteAll();
+    }
+    
+    @Test
+    public void salvando_2_hoteis_e_testando_o_retorno_por_findAllById() throws Exception {
+        final Hotel hotel1 = new Hotel();
+        hotel1.setId(1);
+        hotel1.setCityCode(100);
+        hotel1.setCityName("Natal");
+        final Hotel hotel2 = new Hotel();
+        hotel2.setId(2);
+        hotel2.setCityCode(101);
+        hotel2.setCityName("Recife");
+        
+        hotelRepository.save(hotel1);
+        hotelRepository.save(hotel2);
+        
+        List<Hotel> hotels2 = new ArrayList<>();
+        Long arg[] = { 1l, 2l };
+        Iterable<Long> arg0 = Arrays.asList(arg);
+        hotelRepository.findAllById( arg0 ).forEach(hotels2::add);
+        assertEquals( 2, hotels2.size() );
         hotelRepository.deleteAll();
     }
 

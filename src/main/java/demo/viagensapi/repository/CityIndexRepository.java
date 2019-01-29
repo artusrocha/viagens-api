@@ -3,9 +3,9 @@ package demo.viagensapi.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import demo.viagensapi.model.Hotel;
+import demo.viagensapi.model.CityIndex;
 
 @Repository
-public interface HotelRepository extends CrudRepository<Hotel, Long> {
+public interface CityIndexRepository extends CrudRepository<CityIndex, Long> {
 
 }

@@ -46,7 +46,7 @@ public class HotelServiceTest {
 		/*
 		 * final Hotel hotel = new Hotel(); hotel.setId(1000); hotel.setCityCode(1000);
 		 * hotel.setCityName("Lisboa"); hotel.setRooms( new ArrayList<Room>() );
-		 * hotel.getRooms().add(new Room()); hotel.getRooms().get(0).setRoomId(1);
+		 * hotel.getRooms().add(new Room()); hotel.getRooms().get(0).setRoomID(1);
 		 * hotel.getRooms().get(0).setPrice( new Price() );
 		 * hotel.getRooms().get(0).getPrice().setAdult(500.00);
 		 * hotel.getRooms().get(0).getPrice().setChild(45.00);
@@ -82,7 +82,7 @@ public class HotelServiceTest {
 		hotel.setCityName("Lisboa");
 		hotel.setRooms(new ArrayList<Room>());
 		hotel.getRooms().add(new Room());
-		hotel.getRooms().get(0).setRoomId(1);
+		hotel.getRooms().get(0).setRoomID(1);
 		hotel.getRooms().get(0).setPrice(new Price());
 		hotel.getRooms().get(0).getPrice().setAdult(500.00);
 		hotel.getRooms().get(0).getPrice().setChild(45.00);

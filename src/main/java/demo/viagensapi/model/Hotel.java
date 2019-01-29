@@ -1,6 +1,7 @@
 package demo.viagensapi.model;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.data.redis.core.RedisHash;
@@ -18,6 +19,8 @@ public class Hotel implements Serializable {
 	private long cityCode;
 	private String cityName;
 	private List<Room> rooms;
+	private Instant time ;
+	
 	public long getId() {
 		return id;
 	}
@@ -53,5 +56,11 @@ public class Hotel implements Serializable {
     public String toString() {
         return "Hotel{" + "id: " + id + ", name:\"" + name + "\", cityCode: " + cityCode + '}';
     }
+	public Instant getTime() {
+		return time;
+	}
+	public void setTime(Instant time) {
+		this.time = time;
+	}
 	
 }
